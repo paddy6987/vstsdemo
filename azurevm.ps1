@@ -1,6 +1,5 @@
 
 
-Connect-AzureRmAccount
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 New-AzureRmVm `
     -ResourceGroupName "myResourceGroup" `
