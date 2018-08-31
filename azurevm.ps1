@@ -1,10 +1,11 @@
 
-$username = 'pradnesh'
-$password = "Password@123"
+$passwd = Get-Content -Path D:\cred.txt
+$secpasswd = ConvertTo-SecureString $passwd -AsPlainText -Force
+$mycreds = New-Object System.Management.Automation.PSCredential("username", $secpasswd)
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 New-AzureRmVm `
-    -ResourceGroupName "myResourceGroup" `
-    -Credential ($username,$password)`
+    -ResourceGroupName "myresourcegroup" `
+    -Credential $mycreds `
     -Name "myVM" `
     -Location "East US" `
     -VirtualNetworkName "myVnet" `
