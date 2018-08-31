@@ -1,7 +1,6 @@
-
-$passwd = Get-Content -Path D:\cred.txt
-$secpasswd = ConvertTo-SecureString $passwd -AsPlainText -Force
-$mycreds = New-Object System.Management.Automation.PSCredential("username", $secpasswd)
+$secretText = (Get-AzureKeyVaultSecret -VaultName 'Powershell' -Name 'Powerkey').SecretValue
+$secpasswd = ConvertTo-SecureString $secretText -AsPlainText -Force
+$mycreds = New-Object System.Management.Automation.PSCredential("username",$secpasswd)
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 New-AzureRmVm `
     -ResourceGroupName "myresourcegroup" `
@@ -12,4 +11,4 @@ New-AzureRmVm `
     -SubnetName "mySubnet" `
     -SecurityGroupName "myNetworkSecurityGroup" `
     -PublicIpAddressName "myPublicIpAddress" `
-    -OpenPorts 80,3389
+-OpenPorts 80,3389
