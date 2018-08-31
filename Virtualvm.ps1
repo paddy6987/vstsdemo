@@ -1,9 +1,10 @@
 $resourceGroup = "myResourceGroup"
 $location = "westeurope"
 $vmName = "myVM"
+$secretText = (Get-AzureKeyVaultSecret -VaultName 'Powershell' -Name 'Powerkey').SecretValue
+$secpasswd = ConvertTo-SecureString $secretText -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential("username",$secpasswd)
 
-# Create user object
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
 
 # Create a resource group
 New-AzureRmResourceGroup -Name $resourceGroup -Location $location
