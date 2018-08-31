@@ -8,4 +8,4 @@
 
 Get-AzureRmVM -status | Stop-AzureRmVM 
 
-Write-Host "All Azure VM are stopped"
+#Write-Host "All Azure VM are stopped"
