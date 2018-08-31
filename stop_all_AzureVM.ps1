@@ -7,6 +7,6 @@
 ##############################################################
 #Connect-AzureRmAccount
 #Get-AzureRmVM -status | Stop-AzureRmVM 
-stop-azurermvm -ResourceGroupName Deploy
+stop-azurermvm -Name Deploy-win
 
 #Write-Host "All Azure VM are stopped"
