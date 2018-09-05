@@ -5,7 +5,7 @@
 ##   Author = Pradnesh Kambali
 
 ##############################################################
-#Connect-AzureRmAccount
+Connect-AzureRmAccount
 #Get-AzureRmVM -status | Stop-AzureRmVM 
 stop-azurermvm -ResourceGroupName Deploy -Name Deploy-win
 
