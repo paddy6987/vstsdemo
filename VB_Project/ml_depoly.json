@@ -37,7 +37,7 @@
             "properties": {
                 "userStorageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_name'))]",
                 "keyVaultIdentifierId": null,
-                "ownerEmail": "pradnesh_tech@yahoo.in"
+                "ownerEmail": "yourmail@ID"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_name'))]"
