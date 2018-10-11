@@ -1,0 +1,92 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccounts_name": {
+            "type": "String"
+        },
+        "Workspaces_name": {
+            "type": "String"
+        },
+        "commitmentPlans_name": {
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.MachineLearning/commitmentPlans",
+            "sku": {
+                "name": "DevTest",
+                "tier": "Standard",
+                "capacity": 1
+            },
+            "name": "[parameters('commitmentPlans_name')]",
+            "apiVersion": "2016-05-01-preview",
+            "location": "westeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "chargeForOverage": false,
+                "chargeForPlan": false,
+                "creationDate": "2018-10-09T11:07:21.501832Z",
+                "maxAssociationLimit": 10000,
+                "maxCapacityLimit": 1,
+                "minCapacityLimit": 1,
+                "planMeter": "00000000-0000-0000-0000-000000000000",
+                "refillFrequencyInDays": 30,
+                "suspendPlanOnOverage": true
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.MachineLearning/Workspaces",
+            "name": "[parameters('Workspaces_name')]",
+            "apiVersion": "2016-04-01",
+            "location": "West Europe",
+            "scale": null,
+            "properties": {
+                "userStorageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_name'))]",
+                "keyVaultIdentifierId": null,
+                "ownerEmail": "live.com#ddsaraf27@outlook.com"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_name')]",
+            "apiVersion": "2018-07-01",
+            "location": "westeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": false,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "enabled": true
+                        },
+                        "blob": {
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                }
+            },
+            "dependsOn": []
+        }
+    ]
+}
