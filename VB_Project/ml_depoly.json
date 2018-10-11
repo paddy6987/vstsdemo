@@ -26,31 +26,6 @@
             "location": "[resourceGroup().location]",
             "tags": {},
             "scale": null,
-             "properties": {
-                "chargeForOverage": false,
-                "chargeForPlan": false,
-                "creationDate": "2018-10-09T11:07:21.501832Z",
-                "includedQuantities": {
-                    "machineLearningWebServiceComputeHours": {
-                        "allowance": 2,
-                        "amount": 0,
-                        "includedQuantityMeter": "29187de1-b4a1-4503-a6f6-078271b3fc9d",
-                        "overageMeter": "15fb14e6-ece4-4981-a179-2bc796d0b65b"
-                    },
-                    "machineLearningWebServiceTransactions": {
-                        "allowance": 1000,
-                        "amount": 0,
-                        "includedQuantityMeter": "303743b6-4cd0-44df-8ec2-a93c8f14943b",
-                        "overageMeter": "c7cf66fb-bcc3-4ee2-b81b-160bcf6c6a14"
-                    }
-                },
-                "maxAssociationLimit": 10000,
-                "maxCapacityLimit": 1,
-                "minCapacityLimit": 1,
-                "planMeter": "00000000-0000-0000-0000-000000000000",
-                "refillFrequencyInDays": 30,
-                "suspendPlanOnOverage": true
-            },
             "dependsOn": []
         },
         {
@@ -62,7 +37,7 @@
             "properties": {
                 "userStorageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_name'))]",
                 "keyVaultIdentifierId": null,
-                "ownerEmail": "live.com#ddsaf27@outlook.com"
+                "ownerEmail": "pradnesh_tech@yahoo.in"
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_name'))]"
